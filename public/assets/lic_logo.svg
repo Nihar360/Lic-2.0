@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 180" width="520" height="180">
+  <defs>
+    <linearGradient id="licBlueGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#003B95" />
+      <stop offset="100%" stop-color="#00246B" />
+    </linearGradient>
+    <linearGradient id="licGoldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFD100" />
+      <stop offset="100%" stop-color="#E5B200" />
+    </linearGradient>
+  </defs>
+
+  <!-- Outer Border Container -->
+  <rect x="2" y="2" width="516" height="176" rx="8" fill="#FFFFFF" stroke="#003B95" stroke-width="3" />
+
+  <!-- Left Blue Section -->
+  <path d="M 6 6 L 190 6 L 190 144 L 6 144 Z" fill="url(#licBlueGrad)" />
+  
+  <!-- LIC Hands & Flame Emblem (Oval ring + hands) -->
+  <g transform="translate(98, 75)">
+    <!-- Oval border -->
+    <ellipse cx="0" cy="0" rx="42" ry="52" fill="none" stroke="#FFFFFF" stroke-width="5" />
+    
+    <!-- Left Hand -->
+    <path d="M -30 25 C -34 10, -32 -10, -22 -28 C -18 -32, -12 -28, -15 -20 C -22 -5, -22 10, -18 25 Z" fill="#FFFFFF" />
+    <path d="M -22 28 C -26 15, -24 -2, -14 -18 C -10 -22, -6 -18, -9 -12 C -15 0, -15 15, -12 28 Z" fill="#FFFFFF" />
+    
+    <!-- Right Hand -->
+    <path d="M 30 25 C 34 10, 32 -10, 22 -28 C 18 -32, 12 -28, 15 -20 C 22 -5, 22 10, 18 25 Z" fill="#FFFFFF" />
+    <path d="M 22 28 C 26 15, 24 -2, 14 -18 C 10 -22, 6 -18, 9 -12 C 15 0, 15 15, 12 28 Z" fill="#FFFFFF" />
+
+    <!-- Flame Diya -->
+    <ellipse cx="0" cy="18" rx="14" ry="7" fill="#FFD100" />
+    <path d="M 0 16 C -6 6, -5 -4, 0 -16 C 5 -4, 6 6, 0 16 Z" fill="#FFD100" />
+    <ellipse cx="0" cy="4" rx="4" ry="7" fill="#FFFFFF" opacity="0.9" />
+  </g>
+
+  <!-- Right Yellow Section -->
+  <path d="M 190 6 L 514 6 L 514 144 L 190 144 Z" fill="url(#licGoldGrad)" />
+
+  <!-- Bold LIC Text -->
+  <text x="352" y="112" font-family="'Plus Jakarta Sans', 'Arial Black', sans-serif" font-weight="900" font-size="110" fill="#00246B" text-anchor="middle" letter-spacing="4">LIC</text>
+
+  <!-- Bottom Blue Sub-Bar -->
+  <rect x="6" y="144" width="508" height="30" fill="#00246B" />
+  <text x="260" y="164" font-family="'Plus Jakarta Sans', 'Inter', sans-serif" font-weight="700" font-size="16" fill="#FFFFFF" text-anchor="middle" letter-spacing="1">LIFE INSURANCE CORPORATION OF INDIA</text>
+</svg>

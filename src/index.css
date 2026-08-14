@@ -1,0 +1,67 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+  }
+  
+  h1, h2, h3, h4, .font-heading {
+    font-family: 'Outfit', 'Plus Jakarta Sans', sans-serif;
+  }
+  
+  .font-hindi {
+    font-family: 'Poppins', sans-serif;
+  }
+}
+
+/* Custom Gold Gradient utilities */
+.bg-gold-gradient {
+  background: linear-gradient(135deg, #E8C66A 0%, #C8942E 100%);
+}
+
+.bg-gold-gradient-hover {
+  background: linear-gradient(135deg, #F3DB94 0%, #D49D33 100%);
+}
+
+.bg-navy-gradient {
+  background: linear-gradient(180deg, #051329 0%, #071A3A 100%);
+}
+
+.text-gold-gradient {
+  background: linear-gradient(135deg, #F3DB94 0%, #C8942E 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Custom glassmorphism */
+.glass-card {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+}
+
+/* Subtle gold decorative flourish divider */
+.gold-flourish-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.gold-flourish-divider::before,
+.gold-flourish-divider::after {
+  content: '';
+  height: 1.5px;
+  width: 60px;
+  background: linear-gradient(90deg, transparent, #C8942E, transparent);
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  .gold-flourish-divider::before,
+  .gold-flourish-divider::after {
+    width: 30px;
+  }
+}

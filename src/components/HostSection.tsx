@@ -38,7 +38,7 @@ export const HostSection: React.FC = () => {
               <div className="relative rounded-3xl overflow-hidden bg-navy-900/95 p-3 border border-gold-400/40 shadow-2xl">
                 <img
                   src="/assets/vivek_portrait.png"
-                  alt="Vivek Gholap - LIC Advisor & Financial Planner"
+                  alt="Deepak Gholap - LIC Advisor & Financial Planner"
                   className="w-full h-[380px] sm:h-[480px] lg:h-[520px] object-contain object-bottom"
                 />
               </div>

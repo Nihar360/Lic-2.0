@@ -50,7 +50,7 @@ export interface AdvisorConfig {
 }
 
 export const advisor: AdvisorConfig = {
-  name: "Vivek Gholap",
+  name: "Deepak Gholap",
   title: "LIC Advisor & Financial Planner",
   heroHeadlineMain: "Secure Today",
   heroHeadlineSub: "Assured Tomorrow",
@@ -58,7 +58,7 @@ export const advisor: AdvisorConfig = {
   heroPositioning: "TRUSTED LIC ADVISOR",
   phone: "+91 98921 64068",
   whatsapp: "+919892164068",
-  email: "licvivekgholap@gmail.com",
+  email: "licdeepakgholap@gmail.com",
   location: "Kutwal Colony, Nagpur, Maharashtra",
   googleReviewLink: "https://g.co/kgs/example",
   stats: {
@@ -69,7 +69,7 @@ export const advisor: AdvisorConfig = {
   ctaPrimary: "Book Your Appointment Now",
   ctaSecondary: "Get Expert Guidance for Your Financial Future",
   urgencyText: "Limited Slots – Book Early!",
-  ctaAppointmentText: "Book a 1-on-1 consultation with Vivek Gholap and get personalized guidance for your LIC and financial planning needs.",
+  ctaAppointmentText: "Book a 1-on-1 consultation with Deepak Gholap and get personalized guidance for your LIC and financial planning needs.",
   emotionalStatement: {
     hindi: "आपकी और आपके परिवार की आर्थिक सुरक्षा हमारी पहली प्राथमिकता है। सही योजना आज, सुकून भरा कल।",
     english: "Helping you build a secure future with the right plan today, so you and your loved ones can live tomorrow with confidence and peace of mind.",
@@ -158,19 +158,19 @@ export const advisor: AdvisorConfig = {
     {
       name: "Saurav Purkayastha",
       role: "Verified Client",
-      text: "I am very pleased with the support provided by Vivek sir. He is courteous, professional, and reliable. He made the entire paperwork process easy and hassle-free.",
+      text: "I am very pleased with the support provided by Deepak sir. He is courteous, professional, and reliable. He made the entire paperwork process easy and hassle-free.",
       rating: 5,
     },
     {
       name: "Raju Konar",
       role: "Verified Client",
-      text: "Vivek is very polite and appreciate his behavior towards customer. Highly recommended for all with regards to any help related to LIC policies.",
+      text: "Deepak is very polite and appreciate his behavior towards customer. Highly recommended for all with regards to any help related to LIC policies.",
       rating: 5,
     },
     {
       name: "Amit Kumar Chandel",
       role: "Verified Client",
-      text: "Mr. Vivek is a reliable and professional LIC agent. He explains policies clearly and is always supportive during queries or claims.",
+      text: "Mr. Deepak is a reliable and professional LIC agent. He explains policies clearly and is always supportive during queries or claims.",
       rating: 5,
     },
     {

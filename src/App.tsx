@@ -48,10 +48,10 @@ export function App() {
         {/* 4. Services Section ("How I Can Help You") */}
         <ConsultationTopics />
 
-        {/* 5. Why Choose Vivek ("Why Choose Me?") */}
+        {/* 5. Why Choose Deepak ("Why Choose Me?") */}
         <ConsultationBenefits onClaimClick={handleOpenBookingModal} />
 
-        {/* 6. Meet Your Advisor (Vivek Gholap Bio & Recognition) */}
+        {/* 6. Meet Your Advisor (Deepak Gholap Bio & Recognition) */}
         <HostSection />
 
         {/* 7. Client Reviews & Google Testimonials */}

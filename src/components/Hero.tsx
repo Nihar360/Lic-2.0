@@ -85,7 +85,7 @@ export const Hero: React.FC<HeroProps> = ({ onClaimClick }) => {
                   Get Expert Guidance for Your Financial Future
                 </h3>
                 <p className="text-xs sm:text-sm text-slate-300 mt-1 leading-relaxed">
-                  Book a 1-on-1 consultation with Vivek Gholap and get personalized guidance for your LIC and financial planning needs.
+                  Book a 1-on-1 consultation with Deepak Gholap and get personalized guidance for your LIC and financial planning needs.
                 </p>
               </div>
 
@@ -105,7 +105,7 @@ export const Hero: React.FC<HeroProps> = ({ onClaimClick }) => {
 
           </div>
 
-          {/* RIGHT VISUAL COLUMN - FRAMELESS INTEGRATED VIVEK PORTRAIT (approx 45% desktop width) */}
+          {/* RIGHT VISUAL COLUMN - FRAMELESS INTEGRATED DEEPAK PORTRAIT (approx 45% desktop width) */}
           <div className="lg:col-span-5 relative flex justify-center lg:justify-end pt-4 lg:pt-0">
             
             <div className="relative w-full max-w-md sm:max-w-lg lg:max-w-xl mx-auto flex items-end justify-center">
@@ -117,7 +117,7 @@ export const Hero: React.FC<HeroProps> = ({ onClaimClick }) => {
               <div className="relative w-full overflow-hidden flex items-end justify-center">
                 <img
                   src="/assets/vivek_portrait.png"
-                  alt="Vivek Gholap - LIC Advisor & Financial Planner"
+                  alt="Deepak Gholap - LIC Advisor & Financial Planner"
                   className="w-full h-auto max-h-[460px] sm:max-h-[540px] lg:max-h-[640px] object-contain object-bottom filter drop-shadow-2xl z-10"
                 />
                 

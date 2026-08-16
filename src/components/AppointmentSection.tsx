@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
-import { Phone, Mail, MapPin, Calendar } from 'lucide-react';
+import { Phone, Mail, MapPin, Calendar, Clock, Send } from 'lucide-react';
 import { advisor } from '../config/advisor';
+import { CalendlyWidget } from './CalendlyWidget';
 
 interface AppointmentSectionProps {
   onSuccess: (data: { name: string; date: string; time: string }) => void;
 }
 
 export const AppointmentSection: React.FC<AppointmentSectionProps> = ({ onSuccess }) => {
+  const [activeTab, setActiveTab] = useState<'calendly' | 'form'>('calendly');
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -150,137 +152,183 @@ export const AppointmentSection: React.FC<AppointmentSectionProps> = ({ onSucces
             </div>
           </div>
 
-          {/* RIGHT COLUMN: Clean White Form Card */}
+          {/* RIGHT COLUMN: Clean White Booking Card with Calendly Embed */}
           <div className="lg:col-span-7">
-            <div className="bg-white rounded-2xl sm:rounded-3xl p-5 sm:p-8 lg:p-10 shadow-2xl text-navy-900 border border-gold-400/40 max-w-2xl mx-auto">
-              <h3 className="font-heading text-xl sm:text-2xl lg:text-3xl font-extrabold text-navy-900 text-center mb-5 sm:mb-6">
-                Book Your Appointment
-              </h3>
+            <div className="bg-white rounded-2xl sm:rounded-3xl p-4 sm:p-7 lg:p-8 shadow-2xl text-navy-900 border border-gold-400/40 max-w-2xl mx-auto">
+              
+              {/* Header Title */}
+              <div className="text-center mb-5">
+                <h3 className="font-heading text-xl sm:text-2xl lg:text-3xl font-extrabold text-navy-900">
+                  Book Your Appointment
+                </h3>
+                <p className="text-xs sm:text-sm text-slate-600 mt-1 font-medium">
+                  Choose your preferred booking option below:
+                </p>
 
-              <form onSubmit={handleSubmit} className="space-y-3.5 sm:space-y-4">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 sm:gap-4">
-                  <div>
-                    <label className="block text-[11px] sm:text-xs font-bold text-navy-900 mb-1 sm:mb-1.5 uppercase tracking-wide">
-                      Your Name *
-                    </label>
-                    <input
-                      type="text"
-                      name="name"
-                      value={formData.name}
-                      onChange={handleChange}
-                      placeholder="Enter name"
-                      className={`w-full px-3.5 py-2.5 sm:px-4 sm:py-3 rounded-xl border text-xs sm:text-sm lg:text-base focus:outline-none transition-colors ${
-                        errors.name ? 'border-red-500 bg-red-50' : 'border-slate-300 focus:border-gold-DEFAULT'
-                      }`}
-                    />
-                    {errors.name && <p className="text-red-500 text-[10px] sm:text-xs mt-0.5 sm:mt-1">{errors.name}</p>}
-                  </div>
-
-                  <div>
-                    <label className="block text-[11px] sm:text-xs font-bold text-navy-900 mb-1 sm:mb-1.5 uppercase tracking-wide">
-                      Phone Number *
-                    </label>
-                    <input
-                      type="tel"
-                      name="phone"
-                      value={formData.phone}
-                      onChange={handleChange}
-                      placeholder="Phone number"
-                      className={`w-full px-3.5 py-2.5 sm:px-4 sm:py-3 rounded-xl border text-xs sm:text-sm lg:text-base focus:outline-none transition-colors ${
-                        errors.phone ? 'border-red-500 bg-red-50' : 'border-slate-300 focus:border-gold-DEFAULT'
-                      }`}
-                    />
-                    {errors.phone && <p className="text-red-500 text-[10px] sm:text-xs mt-0.5 sm:mt-1">{errors.phone}</p>}
-                  </div>
+                {/* Tab Switcher */}
+                <div className="flex items-center justify-center p-1 bg-slate-100 rounded-xl mt-3 max-w-md mx-auto border border-slate-200">
+                  <button
+                    type="button"
+                    onClick={() => setActiveTab('calendly')}
+                    className={`flex-1 py-2 px-3 rounded-lg text-xs sm:text-sm font-bold flex items-center justify-center gap-1.5 transition-all ${
+                      activeTab === 'calendly'
+                        ? 'bg-navy-900 text-gold-400 shadow-md'
+                        : 'text-slate-600 hover:text-navy-900'
+                    }`}
+                  >
+                    <Clock className="w-4 h-4" />
+                    <span>Calendly Live Slots</span>
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setActiveTab('form')}
+                    className={`flex-1 py-2 px-3 rounded-lg text-xs sm:text-sm font-bold flex items-center justify-center gap-1.5 transition-all ${
+                      activeTab === 'form'
+                        ? 'bg-navy-900 text-gold-400 shadow-md'
+                        : 'text-slate-600 hover:text-navy-900'
+                    }`}
+                  >
+                    <Send className="w-4 h-4" />
+                    <span>Quick Message</span>
+                  </button>
                 </div>
+              </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 sm:gap-4">
-                  <div>
-                    <label className="block text-[11px] sm:text-xs font-bold text-navy-900 mb-1 sm:mb-1.5 uppercase tracking-wide">
-                      Email Address *
-                    </label>
-                    <input
-                      type="email"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleChange}
-                      placeholder="Email address"
-                      className={`w-full px-3.5 py-2.5 sm:px-4 sm:py-3 rounded-xl border text-xs sm:text-sm lg:text-base focus:outline-none transition-colors ${
-                        errors.email ? 'border-red-500 bg-red-50' : 'border-slate-300 focus:border-gold-DEFAULT'
-                      }`}
-                    />
-                    {errors.email && <p className="text-red-500 text-[10px] sm:text-xs mt-0.5 sm:mt-1">{errors.email}</p>}
-                  </div>
-
-                  <div>
-                    <label className="block text-[11px] sm:text-xs font-bold text-navy-900 mb-1 sm:mb-1.5 uppercase tracking-wide">
-                      Preferred Date *
-                    </label>
-                    <input
-                      type="date"
-                      name="date"
-                      min={new Date().toISOString().split('T')[0]}
-                      value={formData.date}
-                      onChange={handleChange}
-                      className={`w-full px-3.5 py-2.5 sm:px-4 sm:py-3 rounded-xl border text-xs sm:text-sm lg:text-base focus:outline-none transition-colors ${
-                        errors.date ? 'border-red-500 bg-red-50' : 'border-slate-300 focus:border-gold-DEFAULT'
-                      }`}
-                    />
-                    {errors.date && <p className="text-red-500 text-[10px] sm:text-xs mt-0.5 sm:mt-1">{errors.date}</p>}
-                  </div>
+              {/* TAB 1: CALENDLY WIDGET */}
+              {activeTab === 'calendly' && (
+                <div className="animate-fadeIn">
+                  <CalendlyWidget height="660px" minHeight="560px" />
                 </div>
+              )}
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 sm:gap-4">
-                  <div>
-                    <label className="block text-[11px] sm:text-xs font-bold text-navy-900 mb-1 sm:mb-1.5 uppercase tracking-wide">
-                      Preferred Time *
-                    </label>
-                    <select
-                      name="time"
-                      value={formData.time}
-                      onChange={handleChange}
-                      className={`w-full px-3.5 py-2.5 sm:px-4 sm:py-3 rounded-xl border text-xs sm:text-sm lg:text-base focus:outline-none transition-colors ${
-                        errors.time ? 'border-red-500 bg-red-50' : 'border-slate-300 focus:border-gold-DEFAULT'
-                      }`}
-                    >
-                      <option value="">Select Time</option>
-                      {timeOptions.map((option, idx) => (
-                        <option key={idx} value={option}>{option}</option>
-                      ))}
-                    </select>
-                    {errors.time && <p className="text-red-500 text-[10px] sm:text-xs mt-0.5 sm:mt-1">{errors.time}</p>}
+              {/* TAB 2: MANUAL FORM */}
+              {activeTab === 'form' && (
+                <form onSubmit={handleSubmit} className="space-y-3.5 sm:space-y-4 animate-fadeIn">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 sm:gap-4">
+                    <div>
+                      <label className="block text-[11px] sm:text-xs font-bold text-navy-900 mb-1 sm:mb-1.5 uppercase tracking-wide">
+                        Your Name *
+                      </label>
+                      <input
+                        type="text"
+                        name="name"
+                        value={formData.name}
+                        onChange={handleChange}
+                        placeholder="Enter name"
+                        className={`w-full px-3.5 py-2.5 sm:px-4 sm:py-3 rounded-xl border text-xs sm:text-sm lg:text-base focus:outline-none transition-colors ${
+                          errors.name ? 'border-red-500 bg-red-50' : 'border-slate-300 focus:border-gold-DEFAULT'
+                        }`}
+                      />
+                      {errors.name && <p className="text-red-500 text-[10px] sm:text-xs mt-0.5 sm:mt-1">{errors.name}</p>}
+                    </div>
+
+                    <div>
+                      <label className="block text-[11px] sm:text-xs font-bold text-navy-900 mb-1 sm:mb-1.5 uppercase tracking-wide">
+                        Phone Number *
+                      </label>
+                      <input
+                        type="tel"
+                        name="phone"
+                        value={formData.phone}
+                        onChange={handleChange}
+                        placeholder="Phone number"
+                        className={`w-full px-3.5 py-2.5 sm:px-4 sm:py-3 rounded-xl border text-xs sm:text-sm lg:text-base focus:outline-none transition-colors ${
+                          errors.phone ? 'border-red-500 bg-red-50' : 'border-slate-300 focus:border-gold-DEFAULT'
+                        }`}
+                      />
+                      {errors.phone && <p className="text-red-500 text-[10px] sm:text-xs mt-0.5 sm:mt-1">{errors.phone}</p>}
+                    </div>
                   </div>
 
-                  <div>
-                    <label className="block text-[11px] sm:text-xs font-bold text-navy-900 mb-1 sm:mb-1.5 uppercase tracking-wide">
-                      Your Message (Optional)
-                    </label>
-                    <input
-                      type="text"
-                      name="message"
-                      value={formData.message}
-                      onChange={handleChange}
-                      placeholder="Brief requirement"
-                      className="w-full px-3.5 py-2.5 sm:px-4 sm:py-3 rounded-xl border border-slate-300 focus:border-gold-DEFAULT text-xs sm:text-sm lg:text-base focus:outline-none"
-                    />
-                  </div>
-                </div>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 sm:gap-4">
+                    <div>
+                      <label className="block text-[11px] sm:text-xs font-bold text-navy-900 mb-1 sm:mb-1.5 uppercase tracking-wide">
+                        Email Address *
+                      </label>
+                      <input
+                        type="email"
+                        name="email"
+                        value={formData.email}
+                        onChange={handleChange}
+                        placeholder="Email address"
+                        className={`w-full px-3.5 py-2.5 sm:px-4 sm:py-3 rounded-xl border text-xs sm:text-sm lg:text-base focus:outline-none transition-colors ${
+                          errors.email ? 'border-red-500 bg-red-50' : 'border-slate-300 focus:border-gold-DEFAULT'
+                        }`}
+                      />
+                      {errors.email && <p className="text-red-500 text-[10px] sm:text-xs mt-0.5 sm:mt-1">{errors.email}</p>}
+                    </div>
 
-                <button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="w-full bg-gold-gradient hover:bg-gold-gradient-hover text-navy-900 font-extrabold py-3.5 sm:py-4 px-6 rounded-xl sm:rounded-2xl text-sm sm:text-base lg:text-lg shadow-gold-glow hover:shadow-xl transition-all duration-300 flex items-center justify-center gap-2.5 transform active:scale-95 disabled:opacity-75 font-heading mt-3 sm:mt-4"
-                >
-                  {isSubmitting ? (
-                    <span>Processing Appointment...</span>
-                  ) : (
-                    <>
-                      <Calendar className="w-4 h-4 sm:w-5 sm:h-5" />
-                      <span>Book My Appointment Now</span>
-                    </>
-                  )}
-                </button>
-              </form>
+                    <div>
+                      <label className="block text-[11px] sm:text-xs font-bold text-navy-900 mb-1 sm:mb-1.5 uppercase tracking-wide">
+                        Preferred Date *
+                      </label>
+                      <input
+                        type="date"
+                        name="date"
+                        min={new Date().toISOString().split('T')[0]}
+                        value={formData.date}
+                        onChange={handleChange}
+                        className={`w-full px-3.5 py-2.5 sm:px-4 sm:py-3 rounded-xl border text-xs sm:text-sm lg:text-base focus:outline-none transition-colors ${
+                          errors.date ? 'border-red-500 bg-red-50' : 'border-slate-300 focus:border-gold-DEFAULT'
+                        }`}
+                      />
+                      {errors.date && <p className="text-red-500 text-[10px] sm:text-xs mt-0.5 sm:mt-1">{errors.date}</p>}
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 sm:gap-4">
+                    <div>
+                      <label className="block text-[11px] sm:text-xs font-bold text-navy-900 mb-1 sm:mb-1.5 uppercase tracking-wide">
+                        Preferred Time *
+                      </label>
+                      <select
+                        name="time"
+                        value={formData.time}
+                        onChange={handleChange}
+                        className={`w-full px-3.5 py-2.5 sm:px-4 sm:py-3 rounded-xl border text-xs sm:text-sm lg:text-base focus:outline-none transition-colors ${
+                          errors.time ? 'border-red-500 bg-red-50' : 'border-slate-300 focus:border-gold-DEFAULT'
+                        }`}
+                      >
+                        <option value="">Select Time</option>
+                        {timeOptions.map((option, idx) => (
+                          <option key={idx} value={option}>{option}</option>
+                        ))}
+                      </select>
+                      {errors.time && <p className="text-red-500 text-[10px] sm:text-xs mt-0.5 sm:mt-1">{errors.time}</p>}
+                    </div>
+
+                    <div>
+                      <label className="block text-[11px] sm:text-xs font-bold text-navy-900 mb-1 sm:mb-1.5 uppercase tracking-wide">
+                        Your Message (Optional)
+                      </label>
+                      <input
+                        type="text"
+                        name="message"
+                        value={formData.message}
+                        onChange={handleChange}
+                        placeholder="Brief requirement"
+                        className="w-full px-3.5 py-2.5 sm:px-4 sm:py-3 rounded-xl border border-slate-300 focus:border-gold-DEFAULT text-xs sm:text-sm lg:text-base focus:outline-none"
+                      />
+                    </div>
+                  </div>
+
+                  <button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="w-full bg-gold-gradient hover:bg-gold-gradient-hover text-navy-900 font-extrabold py-3.5 sm:py-4 px-6 rounded-xl sm:rounded-2xl text-sm sm:text-base lg:text-lg shadow-gold-glow hover:shadow-xl transition-all duration-300 flex items-center justify-center gap-2.5 transform active:scale-95 disabled:opacity-75 font-heading mt-3 sm:mt-4"
+                  >
+                    {isSubmitting ? (
+                      <span>Processing Appointment...</span>
+                    ) : (
+                      <>
+                        <Calendar className="w-4 h-4 sm:w-5 sm:h-5" />
+                        <span>Book My Appointment Now</span>
+                      </>
+                    )}
+                  </button>
+                </form>
+              )}
+
             </div>
           </div>
 

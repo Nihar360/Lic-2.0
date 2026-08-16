@@ -10,6 +10,7 @@ export interface AdvisorConfig {
   email: string;
   location: string;
   googleReviewLink: string;
+  calendlyUrl: string;
   stats: {
     families: string;
     experience: string;
@@ -61,6 +62,7 @@ export const advisor: AdvisorConfig = {
   email: "licdeepakgholap@gmail.com",
   location: "Kutwal Colony, Nagpur, Maharashtra",
   googleReviewLink: "https://g.co/kgs/example",
+  calendlyUrl: "https://calendly.com/nikunaik2003/30min",
   stats: {
     families: "Trusted Guidance",
     experience: "Personalized Service",
